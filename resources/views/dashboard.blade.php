@@ -1,6 +1,11 @@
-@extends('layouts.template')
+@extends('layouts.dashboard')
 
+<!-- title page-nya diisi disini (misal: Dashboard) -->
 @section('title', 'Dashboard')
+
+@section('styles')
+<!-- simpan css disini -->
+@endsection
 
 @section('content')
 <div class="container-fluid py-4">
@@ -407,4 +412,8 @@
         </div>
     </footer>
 </div>
+@endsection
+
+@section('scripts')
+<!-- simpan js disini -->
 @endsection
