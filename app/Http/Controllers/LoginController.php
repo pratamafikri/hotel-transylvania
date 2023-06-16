@@ -4,38 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Session;
 
 class LoginController extends Controller
 {
-    // 
-    public function login()
+    public function showLoginForm()
     {
-        if (Auth::check()) {
-            return redirect('room');
-        }else{
-            return view('login');
-        }
+        return view('login');
     }
 
-    public function actionlogin(Request $request)
-    {
-        $data = [
-            'username' => $request->input('username'),
-            'password' => $request->input('password'),
-        ];
 
-        if (Auth::Attempt($data)) {
-            return redirect('room');
-        }else{
-            Session::flash('error', 'Username atau Password Salah');
-            return redirect('/');
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/dashboard');
         }
+
+        return back()->withErrors([
+            'username' => 'The provided credentials do not match our records.',
+        ]);
     }
 
-    public function actionlogout()
+    public function logout(Request $request)
     {
         Auth::logout();
-        return redirect('/');
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }
+
