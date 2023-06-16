@@ -5,46 +5,39 @@
 @endsection
 
 @section('main')
-    <section class="vh-100" style="background-color: #508bfc;">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
 
-                            <h3 class="mb-5">Sign in</h3>
+                        <h3 class="mb-5">Welcome Back !</h3>
+                        <p>Sign in now to continue</p>
 
-                            <div class="form-outline mb-4">
-                                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                                <label class="form-label" for="typeEmailX-2">Email</label>
+                        <form action="{{ route('actionlogin') }}" method="post">
+                            <div class="mb-3">
+                                <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username">
                             </div>
-
-                            <div class="form-outline mb-4">
-                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                                <label class="form-label" for="typePasswordX-2">Password</label>
+                            <div class="mb-3">
+                                <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
                             </div>
-
-                            <!-- Checkbox -->
-                            <div class="form-check d-flex justify-content-start mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                                <label class="form-check-label" for="form1Example3"> Remember password </label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
                             </div>
-
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-
-                            <hr class="my-4">
-
-                            <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
-                                type="submit"><i class="fab fa-google me-2"></i> Sign in with google</button>
-                            <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
-                                type="submit"><i class="fab fa-facebook-f me-2"></i>Sign in with facebook</button>
-
-                        </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Sign in</button>
+                            </div>
+                            <p class="text-sm mt-3 mb-0">Don't have an account? <a href="{{ url('register') }}" class="text-dark font-weight-bolder">Register</a></p>
+                        </form>
+                        <hr class="my-4">
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 @endsection
 
