@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'address' => 'Jalan yang jauh jangan lupa pulang',
             'nationality' => 'Indonesia',
             'username' => 'admin',
-            'password' => 'password',
+            'password' => bcrypt('password'),
             'status' => 'aktif',
             'role' => 'admin'
         ]);
