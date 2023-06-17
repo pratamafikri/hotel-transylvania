@@ -5,6 +5,7 @@ use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+
+Route::get('/user', [UserController::class, 'index'])->name('user');
+Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');

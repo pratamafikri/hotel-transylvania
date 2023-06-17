@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('user');
     }
 
     /**
@@ -42,9 +42,14 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->back()->withErrors(['User not found.']);
+        }
+
+        return view('edit', compact('user'));
     }
 
     /**
@@ -52,8 +57,24 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'fullname' => 'required',
+            'phone_number' => 'required',
+            'nationality' => 'required',
+            'no_ktp' => 'required',
+            'address' => 'required'
+        ]);
+
+        $user->fullname = $request->input('fullname');
+        $user->phone_number = $request->input('phone_number');
+        $user->nationality = $request->input('nationality');
+        $user->no_ktp = $request->input('no_ktp');
+        $user->address = $request->input('address');
+        $user->save();
+
+        return redirect()->route('dashboard')->with('success', 'User updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
