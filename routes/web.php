@@ -24,9 +24,8 @@ Route::get('/', function () {
 Route::resource('/room', RoomController::class);
 Route::resource('/reservation', ReservationController::class);
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register', [LoginController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [LoginController::class, 'register'])->name('register.submit');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');

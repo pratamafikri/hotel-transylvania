@@ -5,19 +5,33 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
 class User extends Model implements Authenticatable
 {
-    use HasFactory;
+    use HasFactory, AuthenticableTrait;
 
     protected $fillable = [
         'username',
+        'email',
         'password',
+        'no_ktp',
+        'fullname',
+        'phone_number',
+        'address',
+        'nationality',
+        'status',
+        'role'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
     public function getAuthIdentifierName()
     {
-        return 'id'; // Ganti 'id' dengan nama kolom identitas yang sesuai dalam tabel users Anda
+        return 'id';
     }
 
     public function getAuthIdentifier()
