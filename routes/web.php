@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,11 @@ Route::get('/', function () {
 
 Route::resource('/room', RoomController::class);
 Route::resource('/reservation', ReservationController::class);
+
+Route::get('/book', [BookingController::class, 'index'])->name('book.index');
+Route::get('/book/search', [BookingController::class, 'getAvailableRoom'])->name('book.search');
+Route::post('/book/create', [BookingController::class, 'create'])->name('book.create');
+Route::get('/book/invoice/{id}', [BookingController::class, 'printInvoice'])->name('book.invoice');
 
 Route::get('/register', [LoginController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [LoginController::class, 'register'])->name('register.submit');
