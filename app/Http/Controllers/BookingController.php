@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Elibyy\TCPDF\Facades\TCPDF;
 
@@ -41,6 +42,10 @@ class BookingController extends Controller
             'total_amount' => $request->room_price * $request->durasi,
         ];
         Reservation::create($data);
+
+        $room = Room::find($request->room_id);
+        $room->status = "booked";
+        $room->save();
 
         return redirect()->route('book.index')->with('msg', 'Booking berhasil. <a class="text-white-50" href="' . route("book.invoice", $reservation_code) . '" target="_blank">Klik disini untuk cetak invoice</a>');
     }

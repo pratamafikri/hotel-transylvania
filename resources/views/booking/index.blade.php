@@ -89,7 +89,7 @@
                         <select name="room_type" id="room_type" class="form-control">
                             <option disabled selected value="">-- Pilih tipe kamar --</option>
                             <option value="Standard">Standard</option>
-                            <option value="Premium">Premium</option>
+                            <option value="Deluxe">Deluxe</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-6">
@@ -98,10 +98,6 @@
                             <option disabled selected value="">-- Pilih tipe bed --</option>
                             <option value="Single">Single</option>
                             <option value="Double">Double</option>
-                            <option value="Triple">Triple</option>
-                            <option value="Quad">Quad</option>
-                            <option value="Queen">Queen</option>
-                            <option value="King">King</option>
                         </select>
                     </div>
                 </div>
