@@ -23,8 +23,13 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::resource('/room', RoomController::class);
-Route::resource('/reservation', ReservationController::class);
+Route::get('/room', [RoomController::class,'index'])->name('room');
+Route::get('/room/create', [RoomController::class, 'create'])->name('room.create');
+Route::post('/room/store', [RoomController::class, 'store'])->name('room.store');
+Route::get('/room/{id}/edit', [RoomController::class, 'edit'])->name('room.edit');
+Route::post('/room/{id}/update', [RoomController::class, 'update'])->name('room.update');
+Route::get('/room/{id}/delete', [RoomController::class, 'destroy'])->name('room.destroy');
+
 
 Route::get('/book', [BookingController::class, 'index'])->name('book.index');
 Route::get('/book/search', [BookingController::class, 'getAvailableRoom'])->name('book.search');
