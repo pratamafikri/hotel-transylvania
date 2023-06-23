@@ -30,6 +30,10 @@ Route::get('/room/{id}/edit', [RoomController::class, 'edit'])->name('room.edit'
 Route::post('/room/{id}/update', [RoomController::class, 'update'])->name('room.update');
 Route::get('/room/{id}/delete', [RoomController::class, 'destroy'])->name('room.destroy');
 
+Route::get('/room/checkin', [RoomController::class,'checkin'])->name('room.checkin');
+Route::post('/room/{id}/update_checkin', [RoomController::class, 'update_checkin'])->name('room.update_checkin');
+
+// Route::get('/room/findCodeReservation', [RoomController::class,'findCodeReservation'])->name('room.findCodeReservation');
 
 Route::get('/book', [BookingController::class, 'index'])->name('book.index');
 Route::get('/book/search', [BookingController::class, 'getAvailableRoom'])->name('book.search');

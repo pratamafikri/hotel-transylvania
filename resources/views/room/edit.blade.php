@@ -53,9 +53,10 @@
                         <label for="status">Status</label>
                         <select  class="form-select form-select-sm" aria-label=".form-select-sm example" name="status" id="status" class="custom-select rounded-0">
                             <option selected="">Pilih Tipe Kasur</option>
-                            <option value="Available" @if(str_contains($room->status,'available' )) selected @endif>Available</option>
-                            <option value="Booked" @if(str_contains($room->status,'booked' )) selected @endif>Booked</option>
-                            <option value="Under Maintenance" @if(str_contains($room->status,'under' )) selected @endif>Under Maintenance</option>
+                            <option value="available" @if(str_contains($room->status,'available' )) selected @endif>Available</option>
+                            <option value="booked" @if(str_contains($room->status,'booked' )) selected @endif>Booked</option>
+                            <option value="maintenance" @if(str_contains($room->status,'maintenance' )) selected @endif>Maintenance</option>
+                            <option value="occupied" @if(str_contains($room->status,'occupied' )) selected @endif>Occupied</option>
                         </select>
                     </div>
                 </div>

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
 {
@@ -95,5 +98,61 @@ class RoomController extends Controller
         $room->delete();
 
         return redirect('room');
+    }
+
+    public function checkin (Request $request) {
+        
+        $cari = $request->input('reservation_code');
+ 
+        $reservation = \DB::table('reservation')
+            ->where('reservation_code', $cari)
+            ->get();
+
+        if(!isset($cari)){
+            return view('room.checkin');
+        }
+        if(count($reservation) < 1){
+            echo "<script type='text/javascript'>alert('Tidak ada nomor reservasi $cari');</script>";
+            return view('room.checkin');
+        }
+
+        $user = \DB::table('users')
+            ->where('id', $reservation[0]->user_id)
+            ->get();
+
+        $room = \DB::table('room')
+            ->where('id', $reservation[0]->room_id)
+            ->get();
+
+        return view('room.checkin', ['reservation' => $reservation, 'user' => $user, 'room' => $room]);
+    }
+
+    public function update_checkin(Request $request, string $id)
+    {
+
+        $user = User::find($request->user_id);
+        $reservation = Reservation::find($request->reservation_id);
+        $room = Room::find($request->room_id);
+
+        $user->no_ktp = $request->no_ktp;
+        $user->fullname = $request->fullname;
+        $user->phone_number = $request->phone_number;
+        $user->address = $request->address;
+        $user->nationality = $request->nationality;
+        if($room->status == "occupied"){
+            $room->status = "available";
+            // tambah pengecekan lebih dari hari disini
+            $check_out_date_before = $request->check_out_date_before;
+            $check_out_date = $request->check_out_date;
+            
+        }
+        else{
+            $room->status = "occupied";
+        }
+        $room->save();
+        $user->save();
+        $reservation->update($request->all());
+
+        return redirect('room/checkin?reservation_code='.$request->reservation_code);
     }
 }
