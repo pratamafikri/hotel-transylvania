@@ -35,7 +35,7 @@
             </li>
             @if(Auth::user()->role  == "admin")
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('room') ? 'active' : '' }}"  href="{{ url('room') }}">
+                    <a class="nav-link {{ Request::is('room') || Request::is('room/create') || Request::is('room/*/edit') ? 'active' : '' }}"  href="{{ url('room') }}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-key-25 text-info text-sm opacity-10"></i>
                         </div>
@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link "  href="{{ url('room/checkin') }}">
+                    <a class="nav-link {{ Request::is('room/checkin') ? 'active' : '' }}"  href="{{ url('room/checkin') }}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-curved-next text-primary text-sm opacity-10"></i>
                         </div>

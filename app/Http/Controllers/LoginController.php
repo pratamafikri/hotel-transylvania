@@ -68,7 +68,7 @@ class LoginController extends Controller
         if ($user) {
             Auth::login($user);
 
-            return redirect('/user/'.$user->id.'/edit')->with('success', 'Registration successful. Welcome to our application!');
+            return redirect()->route('user.edit', ['user' => $user->id])->with('success', 'Registration successful. Welcome to our application!');
         } else {
             return back()->withInput()->withErrors(['registration' => 'Registration failed. Please try again.']);
         }

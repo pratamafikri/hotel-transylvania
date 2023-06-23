@@ -12,11 +12,11 @@
     <div class="row">
         <div class="col-12">
             <div class="card mb-4">
-                <div class="card-header pb-0 flex">
-                    <h6>Room</h6>
-                    <a class="btn btn-link bg-primary rounded-3 text-secondary mb-0" href="{{ url('room/create') }}">
-                        <span class="text-white pr-4">Tambah Room</span>
-                        <i class="fa fa-arrow-right text-white pl-4"></i>
+                <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">Room</h4>
+                    <a class="btn btn-link bg-primary rounded-3 text-white" href="{{ url('room/create') }}">
+                        <i class="fa fa-plus"></i>
+                        <span class="ms-2">Add Room</span>
                     </a>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -31,7 +31,7 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Maintenance Start</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Maintenance End</th>
-                                <th>Action</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -26,7 +26,7 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            Reservasi Kamar
+            <h4>Reservasi Kamar</h4>
         </div>
         <div class="card-body">
             @if(Session::has('msg'))

@@ -11,7 +11,7 @@
 <div class="container-fluid py-4">
 	<div class="card card-primary">
 		<div class="card-header">
-			<h3 class="card-title">Tambah Room</h3>
+			<h4 class="card-title">Add Room</h4>
 		</div>
 		<form action="{{url('/room/store')}}"  method="POST">
 			{{csrf_field()}}
@@ -62,7 +62,7 @@
 			</div>
 
             <div class="card-body row">
-                <h3>Maintenance Detail</h3>
+                <h4>Maintenance Detail</h4>
                 <div class="col-4">
                     <div class="form-group">
                         <label for="maintenance_start">Maintenance Start</label>

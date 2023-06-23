@@ -11,16 +11,16 @@
 <div class="container-fluid py-4">
 	<div class="card card-primary">
 		<div class="card-header">
-			<h3 class="card-title">Check In/Out</h3>
+			<h4 class="card-title">Check In/Out</h4>
 		</div>
         <form method="GET" action="{{url('/room/checkin')}}" >
             <div class="card-body">
-                <div class="col-md-4">
+                <center><div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input type="text" name="reservation_code" @if(isset($reservation)) value="{{ $reservation[0]->reservation_code}}" @endif class="form-control" placeholder="Cari Kode Reservasi">
                     </div>
-                </div>
+                </div></center>
             </div>
         </form>
         @if(isset($reservation))
@@ -32,7 +32,7 @@
                     <input type="hidden" name="user_id" value="{{$reservation[0]->user_id}}">
                     <input type="hidden" name="reservation_id" value="{{$reservation[0]->id}}">
                     <input type="hidden" name="reservation_code" value="{{$reservation[0]->reservation_code}}">
-                    <h3>User</h3>
+                    <h5>User</h5>
                     @foreach($user as $user)
                         <div class="col-md-6">
                             <div class="form-group">
@@ -79,7 +79,7 @@
                     @endforeach
 
                     @foreach($room as $room)
-                        <h3 class="mt-3">Reservasi</h3>
+                        <h5 class="mt-3">Reservasi</h5>
                         @foreach($reservation as $reservation)
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -108,7 +108,7 @@
                             </div>
                         @endforeach
 
-                        <h3 class="mt-3">Room <span class="text-danger">({{$room->status}})</span></h3>
+                        <h5 class="mt-3">Room <span class="text-danger">({{$room->status}})</span></h5>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="room_number">Room number</label>
