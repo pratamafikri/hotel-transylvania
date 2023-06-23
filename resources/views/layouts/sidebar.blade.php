@@ -33,6 +33,7 @@
                     <span class="nav-link-text ms-1">Reservasi</span>
                 </a>
             </li>
+            @if(Auth::user()->role  == "admin")
             <li class="nav-item">
                 <a class="nav-link "  href="{{ url('room') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -41,6 +42,7 @@
                     <span class="nav-link-text ms-1">Room</span>
                 </a>
             </li>
+            @endif
         </ul>
     </div>
 </aside>
