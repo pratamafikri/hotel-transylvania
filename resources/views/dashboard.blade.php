@@ -4,7 +4,16 @@
 @section('title', 'Dashboard')
 
 @section('styles')
-<!-- simpan css disini -->
+<style>
+    .carousel-caption-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+</style>
 @endsection
 
 @section('content')
@@ -16,15 +25,19 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Rooms Owned</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
                                 <h5 class="font-weight-bolder">
                                     $53,000
                                 </h5>
+                                <p class="mb-0">
+                                    <span class="text-success text-sm font-weight-bolder">+55%</span>
+                                    since yesterday
+                                </p>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                <i class="ni ni-building text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -37,15 +50,19 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Rooms Available</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
                                 <h5 class="font-weight-bolder">
                                     2,300
                                 </h5>
+                                <p class="mb-0">
+                                    <span class="text-success text-sm font-weight-bolder">+3%</span>
+                                    since last week
+                                </p>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                <i class="ni ni-check-bold text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -58,15 +75,19 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Rooms Occupied</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
                                 <h5 class="font-weight-bolder">
-                                    120
+                                    +3,462
                                 </h5>
+                                <p class="mb-0">
+                                    <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                                    since last quarter
+                                </p>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                <i class="ni ni-book-bookmark text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -79,15 +100,18 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Guest</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
                                 <h5 class="font-weight-bolder">
-                                    100
+                                    $103,430
                                 </h5>
+                                <p class="mb-0">
+                                    <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
+                                </p>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -116,31 +140,25 @@
             <div class="card card-carousel overflow-hidden h-100 p-0">
                 <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
                     <div class="carousel-inner border-radius-lg h-100">
-                        <div class="carousel-item h-100 active" style="background-image: url('./assets/img/carousel-1.jpg'); background-size: cover;">
-                            <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                    <i class="ni ni-camera-compact text-dark opacity-10"></i>
-                                </div>
-                                <h5 class="text-white mb-1">Get started with Argon</h5>
-                                <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
+                        <div class="carousel-item h-100 active" style="position: relative;">
+                            <img src="https://cat-aga.id/wp-content/uploads/2019/10/3-6.jpg" class="d-block w-100" alt="Background Image">
+                            <div class="carousel-caption-overlay"></div>
+                            <div class="carousel-caption d-flex align-items-center justify-content-center text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <h5 class="text-white mb-1">Ingin merasakan kenyamanan tanpa kompromi?</h5>
                             </div>
                         </div>
-                        <div class="carousel-item h-100" style="background-image: url('./assets/img/carousel-2.jpg'); background-size: cover;">
-                            <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                    <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-                                </div>
-                                <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                                <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
+                        <div class="carousel-item h-100" style="position: relative;">
+                            <img src="https://d2ile4x3f22snf.cloudfront.net/wp-content/uploads/sites/210/2017/11/27021004/tentrem-hotel-yogyakarta-gallery-Room-Deluxe-image01.jpg" class="d-block w-100" alt="Background Image">
+                            <div class="carousel-caption-overlay"></div>
+                            <div class="carousel-caption d-flex align-items-center justify-content-center text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <h5 class="text-white mb-1">Rasakan pengalaman menginap yang tak terlupakan</h5>
                             </div>
                         </div>
-                        <div class="carousel-item h-100" style="background-image: url('./assets/img/carousel-3.jpg'); background-size: cover;">
-                            <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                                <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                                    <i class="ni ni-trophy text-dark opacity-10"></i>
-                                </div>
-                                <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                                <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
+                        <div class="carousel-item h-100" style="position: relative;">
+                            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/283786439.jpg?k=6ccc68b23f8bf93b2087fb03cf112eee216d52a1525d598859d51330bfa180a0&o=&hp=1" class="d-block w-100" alt="Background Image">
+                            <div class="carousel-caption-overlay"></div>
+                            <div class="carousel-caption d-flex align-items-center justify-content-center text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <h5 class="text-white mb-1">Pesan sekarang dan nikmati liburan yang penuh kenangan!</h5>
                             </div>
                         </div>
                     </div>
@@ -155,6 +173,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <footer class="footer pt-3  ">
         <div class="container-fluid">
@@ -175,88 +194,4 @@
 
 @section('scripts')
 <!-- simpan js disini -->
-
-<script>
-    var ctx1 = document.getElementById("chart-line").getContext("2d");
-
-    var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
-    gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
-    gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
-    new Chart(ctx1, {
-        type: "line",
-        data: {
-            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            datasets: [{
-                label: "Mobile apps",
-                tension: 0.4,
-                borderWidth: 0,
-                pointRadius: 0,
-                borderColor: "#5e72e4",
-                backgroundColor: gradientStroke1,
-                borderWidth: 3,
-                fill: true,
-                data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                maxBarThickness: 6
-
-            }],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false,
-                }
-            },
-            interaction: {
-                intersect: false,
-                mode: 'index',
-            },
-            scales: {
-                y: {
-                    grid: {
-                        drawBorder: false,
-                        display: true,
-                        drawOnChartArea: true,
-                        drawTicks: false,
-                        borderDash: [5, 5]
-                    },
-                    ticks: {
-                        display: true,
-                        padding: 10,
-                        color: '#fbfbfb',
-                        font: {
-                            size: 11,
-                            family: "Open Sans",
-                            style: 'normal',
-                            lineHeight: 2
-                        },
-                    }
-                },
-                x: {
-                    grid: {
-                        drawBorder: false,
-                        display: false,
-                        drawOnChartArea: false,
-                        drawTicks: false,
-                        borderDash: [5, 5]
-                    },
-                    ticks: {
-                        display: true,
-                        color: '#ccc',
-                        padding: 20,
-                        font: {
-                            size: 11,
-                            family: "Open Sans",
-                            style: 'normal',
-                            lineHeight: 2
-                        },
-                    }
-                },
-            },
-        },
-    });
-</script>
 @endsection
