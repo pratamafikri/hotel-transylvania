@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-<section class="vh-100" style="background-color: #508bfc;">
+<section class="vh-100" style="background-image: url('https://static.vecteezy.com/system/resources/previews/004/114/615/original/hotel-booking-concept-for-web-banner-woman-traveler-reserves-room-or-apartment-in-mobile-app-for-vacation-modern-people-scene-illustration-in-flat-cartoon-design-with-person-characters-vector.jpg'); background-size: 125%;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -28,10 +28,6 @@
                             </div>
                             <div class="mb-3">
                                 <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
-                            </div>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="rememberMe">
-                                <label class="form-check-label" for="rememberMe">Remember me</label>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Sign in</button>
