@@ -23,6 +23,7 @@ class BookingController extends Controller
         $rooms = \DB::table('room')
             ->where('room_type', $roomType)
             ->where('bed', $bedType)
+            ->where('status', 'available')
             ->get();
 
         return response()->json($rooms);
@@ -54,57 +55,75 @@ class BookingController extends Controller
     {
         $reservation = \DB::table('reservation')
             ->join('room', 'reservation.room_id', 'room.id')
-            ->select('reservation.*', 'room.room_number', 'room.room_type', 'room.bed', 'room.price')
+            ->join('users', 'reservation.user_id', 'users.id')
+            ->select('reservation.*', 'room.room_number', 'room.room_type', 'room.bed', 'room.price', 'users.fullname')
             ->where('reservation.reservation_code', $reservation_code)
             ->first();
 
         // dd($reservation);
 
         $filename = 'Invoice_' . $reservation_code . '.pdf';
-        $html = '<h1 style="font-size: 48pt">Hotel<br/>Transylvania</h1>
+        $html = '
+        <table>
+            <tr>
+                <td>
+                    <h1 style="font-size: 38pt">Hotel<br/>Transylvania</h1>
+                </td>
+                <td align="right">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    Date: ' . date("l, d F Y") . '
+                </td>
+            </tr>
+        </table>
+
+        <br/>
+        <br/>
+
         <table>
           <tr>
-            <td>Kode Reservasi: ' . $reservation->reservation_code . ' <br/> Tanggal: ' . date('Y-m-d') . '</td>
+            <td><br/><br/>Kode Reservasi: ' . $reservation->reservation_code . '</td>
             <td align="right"><h1 style="font-size: 24pt">Invoice</h1></td>
           </tr>
         </table>
         <br/>
         <br/>
-        <table border="" cellpadding="5">
-            <tr>
-                <td>Service</td>
-                <td align="center">Price</td>
-                <td align="center">Amount</td>
-                <td align="center">Total</td>
-            </tr>
-            <tr>
-                <td>' . $reservation->room_type . ' room with ' . $reservation->bed . ' bed</td>
-                <td align="center">Rp.' . number_format($reservation->price, 0) . '</td>
-                <td align="center">' . $reservation->number_of_days . ' malam</td>
-                <td align="center">Rp.' . number_format($reservation->price * $reservation->number_of_days, 0) . '</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td>Subtotal</td>
-                <td width="5%">:</td>
-                <td>Rp.' . number_format($reservation->price * $reservation->number_of_days, 0) . '</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td>Tax</td>
-                <td width="5%">:</td>
-                <td>Rp.25.000</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td>Grand total</td>
-                <td width="5%">:</td>
-                <td>Rp.' . number_format(($reservation->price * $reservation->number_of_days) + 25000, 0) . '</td>
-            </tr>
+        <table cellpadding="5">
+            <tbody>
+                <tr>
+                    <td style="background-color: skyblue">Room #</td>
+                    <td style="background-color: skyblue">Name</td>
+                    <td style="background-color: skyblue">Check-in</td>
+                    <td style="background-color: skyblue">Check-out</td>
+                    <td style="background-color: skyblue"># of night</td>
+                    <td style="background-color: skyblue">Price /night</td>
+                </tr>
+                <tr>
+                    <td>' . $reservation->room_number . '</td>
+                    <td>' . $reservation->fullname . '</td>
+                    <td>' . date("d/m/Y", strtotime($reservation->check_in_date)) . '</td>
+                    <td>' . date("d/m/Y", strtotime($reservation->check_out_date)) . '</td>
+                    <td>' . $reservation->number_of_days . '</td>
+                    <td>Rp.' . number_format($reservation->price) . '</td>
+                </tr>
+            </tbody>
         </table>
+
+        <br/>
+        <br/>
+
+        <table cellpadding="5">
+        <tr>
+            <td colspan="4"></td>
+            <td>Grand Total:</td>
+            <td>Rp.' . number_format($reservation->total_amount) . '</td>
+        </tr>
+        </table>
+
         <br/>
         <br/>
         ';

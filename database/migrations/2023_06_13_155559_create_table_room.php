@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('bed', 10);
             $table->double('price');
             $table->enum('status', ['available', 'booked', 'occupied', 'maintenance']);
-            $table->dateTime('maintenance_start');
-            $table->dateTime('maintenance_end');
+            $table->dateTime('maintenance_start')->nullable()->default(null);
+            $table->dateTime('maintenance_end')->nullable()->default(null);
             $table->timestamps();
         });
     }

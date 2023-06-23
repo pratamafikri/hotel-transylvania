@@ -129,6 +129,7 @@ class RoomController extends Controller
 
     public function update_checkin(Request $request, string $id)
     {
+        $type = "checkin";
 
         $user = User::find($request->user_id);
         $reservation = Reservation::find($request->reservation_id);
@@ -139,20 +140,42 @@ class RoomController extends Controller
         $user->phone_number = $request->phone_number;
         $user->address = $request->address;
         $user->nationality = $request->nationality;
+        
+        $reservation_code = $request->reservation_code;
+        
         if($room->status == "occupied"){
             $room->status = "available";
             // tambah pengecekan lebih dari hari disini
+
             $check_out_date_before = $request->check_out_date_before;
-            $check_out_date = $request->check_out_date;
-            
+            $check_out_date = date('Y-m-d H:i:s');
+            // $check_out_date = $request->check_out_date;
+
+            //ubah date dari string ke format UNIX timestamp, lalu dibagi 24 jam (dalam bentuk detik)
+            $compare_time = strtotime($check_out_date) - strtotime($check_out_date_before);
+            $time_diff = $compare_time / 86400;
+
+            if($time_diff > 0) {
+                $reservation->number_of_days = $day_count = $reservation->number_of_days + number_format($time_diff, 0);
+                $reservation->check_out_date = $check_out_date;
+                $reservation->total_amount = $room->price * $day_count;
+            }
+
+            $type = "checkout";
         }
-        else{
+        else {
             $room->status = "occupied";
         }
+
         $room->save();
         $user->save();
         $reservation->update($request->all());
 
-        return redirect('room/checkin?reservation_code='.$request->reservation_code);
+        $msg = ucfirst($type)." berhasil. ";
+
+        if($type == "checkout")
+            $msg .= '<a class="text-white-50" href="' . route("book.invoice", $reservation_code) . '" target="_blank">Klik disini untuk cetak invoice</a>';
+
+        return redirect('room/checkin?reservation_code='.$request->reservation_code)->with('msg', $msg);
     }
 }

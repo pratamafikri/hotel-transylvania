@@ -15,6 +15,11 @@
 		</div>
         <form method="GET" action="{{url('/room/checkin')}}" >
             <div class="card-body">
+                @if(Session::has('msg'))
+                <div class="alert alert-info text-white">
+                    {!! Session::get('msg') !!}
+                </div>
+                @endif
                 <center><div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>

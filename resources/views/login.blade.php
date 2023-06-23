@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title') Login @endsection
+
 @section('styles')
 <!-- simpan css customnya disini -->
 @endsection
