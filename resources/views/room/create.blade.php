@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="room_type">Room Type</label>
                         <select  class="form-select form-select-sm" aria-label=".form-select-sm example" name="room_type" id="room_type" class="custom-select rounded-0">
-                            <option selected=""><label>Pilih Room Type</label></option>
+                            <option disabled><label>Pilih Room Type</label></option>
                             <option value="Standard">Standard</option>
                             <option value="Deluxe">Deluxe</option>
                         </select>
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label for="bed">Bed Type</label>
                         <select  class="form-select form-select-sm" aria-label=".form-select-sm example" name="bed" id="bed" class="custom-select rounded-0">
-                            <option selected="">Pilih Tipe Kasur</option>
+                            <option disabled>Pilih Tipe Kasur</option>
                             <option value="Single">Single</option>
                             <option value="Double">Double</option>
                         </select>
@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label for="status">Status</label>
                         <select  class="form-select form-select-sm" aria-label=".form-select-sm example" name="status" id="status" class="custom-select rounded-0">
-                            <option selected="">Pilih Tipe Kasur</option>
+                            <option disabled>Pilih Tipe Kasur</option>
                             <option value="Available">Available</option>
                             <option value="Booked">Booked</option>
                             <option value="Under Maintenance">Under Maintenance</option>

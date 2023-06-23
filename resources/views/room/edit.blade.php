@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="room_type">Room Type</label>
                         <select  class="form-select form-select-sm" aria-label=".form-select-sm example" name="room_type" id="room_type" class="custom-select rounded-0">
-                            <option selected=""><label>Pilih Room Type</label></option>
+                            <option disabled><label>Pilih Room Type</label></option>
                             <option value="Standard" @if(str_contains($room->room_type,'Standard' )) selected @endif>Standard</option>
                             <option value="Deluxe" @if(str_contains($room->room_type,'Deluxe' )) selected @endif>Deluxe</option>
                         </select>
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label for="bed">Bed Type</label>
                         <select  class="form-select form-select-sm" aria-label=".form-select-sm example" name="bed" id="bed" class="custom-select rounded-0">
-                            <option selected="">Pilih Tipe Kasur</option>
+                            <option disabled>Pilih Tipe Kasur</option>
                             <option value="Single" @if(str_contains($room->bed,'Single' )) selected @endif>Single</option>
                             <option value="Double" @if(str_contains($room->bed,'Double' )) selected @endif>Double</option>
                         </select>
@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label for="status">Status</label>
                         <select  class="form-select form-select-sm" aria-label=".form-select-sm example" name="status" id="status" class="custom-select rounded-0">
-                            <option selected="">Pilih Tipe Kasur</option>
+                            <option disabled>Pilih Tipe Kasur</option>
                             <option value="available" @if(str_contains($room->status,'available' )) selected @endif>Available</option>
                             <option value="booked" @if(str_contains($room->status,'booked' )) selected @endif>Booked</option>
                             <option value="maintenance" @if(str_contains($room->status,'maintenance' )) selected @endif>Maintenance</option>
