@@ -50,5 +50,5 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 Route::get('/user', [UserController::class, 'index'])->name('user');
-Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');

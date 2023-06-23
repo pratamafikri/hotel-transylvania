@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-<section class="vh-100" style="background-color: #508bfc;">
+<section class="vh-100" style="background-image: url('https://static.vecteezy.com/system/resources/previews/010/925/404/original/registration-page-name-and-password-field-fill-in-form-menu-bar-corporate-website-create-account-user-information-flat-design-modern-illustration-vector.jpg'); background-size: 120%;" >
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
