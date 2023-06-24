@@ -147,17 +147,18 @@ class RoomController extends Controller
             $room->status = "available";
             // tambah pengecekan lebih dari hari disini
 
-            $check_out_date_before = $request->check_out_date_before;
+            $check_out_date_before = $request->input('check_out_date_before');
             $check_out_date = date('Y-m-d H:i:s');
             // $check_out_date = $request->check_out_date;
 
             //ubah date dari string ke format UNIX timestamp, lalu dibagi 24 jam (dalam bentuk detik)
-            $compare_time = strtotime($check_out_date) - strtotime($check_out_date_before);
+            $compare_time = strtotime($check_out_date_before) - strtotime($check_out_date);
             $time_diff = $compare_time / 86400;
 
             if($time_diff > 0) {
-                $reservation->number_of_days = $day_count = $reservation->number_of_days + number_format($time_diff, 0);
-                $reservation->check_out_date = $check_out_date;
+                $day_count = $request->input('number_of_days') + number_format($time_diff, 0);
+                $reservation->number_of_days = $day_count;
+                $reservation->check_out_date = $request->input('check_out_date');
                 $reservation->total_amount = $room->price * $day_count;
             }
 
@@ -169,7 +170,7 @@ class RoomController extends Controller
 
         $room->save();
         $user->save();
-        $reservation->update($request->all());
+        $reservation->save();
 
         $msg = ucfirst($type)." berhasil. ";
 
