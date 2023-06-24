@@ -148,11 +148,11 @@ class RoomController extends Controller
             // tambah pengecekan lebih dari hari disini
 
             $check_out_date_before = $request->input('check_out_date_before');
-            $check_out_date = date('Y-m-d H:i:s');
-            // $check_out_date = $request->check_out_date;
+            // $check_out_date = date('Y-m-d H:i:s');
+            $check_out_date = $request->input('check_out_date');
 
             //ubah date dari string ke format UNIX timestamp, lalu dibagi 24 jam (dalam bentuk detik)
-            $compare_time = strtotime($check_out_date_before) - strtotime($check_out_date);
+            $compare_time = strtotime($check_out_date) - strtotime($check_out_date_before);
             $time_diff = $compare_time / 86400;
 
             if($time_diff > 0) {
